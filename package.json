@@ -1,0 +1,42 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.13",
+    "@mdi/font": "5.9.55",
+    "@nuxtjs/color-mode": "2.0.5",
+    "@nuxtjs/tailwindcss": "4.0.0-12",
+    "@pinia/nuxt": "^0.4.9",
+    "bootstrap": "^5.2.3",
+    "firebase": "^9.21.0",
+    "pinia": "^2.0.35",
+    "roboto-fontface": "*",
+    "sass": "^1.62.1",
+    "tailwindcss-dark-mode": "1.1.7",
+    "vuetify": "^3.2.2",
+    "webfontloader": "^1.0.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/color-mode": "^3.2.0",
+    "@nuxtjs/tailwindcss": "^6.6.7",
+    "@types/node": "^18",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.11.0",
+    "nuxt": "^3.4.3",
+    "prettier": "^2.8.8"
+  },
+  "overrides": {
+    "vue": "latest"
+  }
+}
