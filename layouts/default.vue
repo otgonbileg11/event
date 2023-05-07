@@ -4,10 +4,12 @@
     class="bg-white dark:bg-black"
   >
       <slot />
-      <DarkmodeDarkModeToggle />
+      <DarkmodeDarkModeToggle/>
       <AppFooter />
   </div>
 </template>
 
 <script setup>
+
 </script>
+

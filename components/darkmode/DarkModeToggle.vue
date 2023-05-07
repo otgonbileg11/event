@@ -48,6 +48,9 @@ function toggleDarkMode() {
   }else {
     colorMode.value = 'light'
   }
-  console.log(colorMode)
 }
+
+onMounted(() => {
+  console.log(colorMode)
+})
 </script>
