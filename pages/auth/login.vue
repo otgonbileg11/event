@@ -6,7 +6,6 @@
 import LoginRegisterForm from '~/components/auth/LoginRegisterForm.vue';
 import {useAuthStore} from '~/store/useAuthStore'
 
-
 const signupform = ref({
   email: '',
   password: '',
@@ -23,9 +22,9 @@ const error = ref(null)
 const store = useAuthStore()
 
 async function handleSignUp() {
-	console.log(signupform.value)
+  const photoURL = 'https://xsgames.co/randomusers/avatar.php?g=pixel'
   try {
-    const credential = await store.createUser(signupform.value.email, signupform.value.password, signupform.value.displayName)
+    const credential = await store.createUser(signupform.value.email, signupform.value.password, signupform.value.displayName, photoURL)
     signupform.value = {
       email: '',
       password: '',

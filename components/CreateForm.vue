@@ -78,6 +78,9 @@ import { useAuthStore } from "~/store/useAuthStore"
 
   const { filePath, url, uploadImage } = useStorage()
   const { error, addDocument } = useCollection('events')
+
+  const router = useRouter()
+
   const store = useAuthStore()
   const user = store.userProfile
   const isPending = ref(false)
@@ -94,7 +97,7 @@ import { useAuthStore } from "~/store/useAuthStore"
      if(file.value) {
       isPending.value = true
       await uploadImage(file.value)
-      await addDocument({
+      const docRef = await addDocument({
         title: title.value,
         startTime: startTime.value,
         description: description.value,
@@ -104,16 +107,11 @@ import { useAuthStore } from "~/store/useAuthStore"
         filePath: filePath.value,
         location: location.value,
         category: [],
-        creatisedAt: serverTimestamp()
+        createdAt: serverTimestamp()
       })
-      title.value = ''
-      file.value = null
-      startTime.value = null
-      location.value = ''
-      description.value = ''
-      isPending.value = false
       if(!error.value) {
         console.log('event added')
+        router.push({ path: `/events/${docRef.id}`})
       }
     }
   }

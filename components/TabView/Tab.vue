@@ -3,8 +3,8 @@
   <v-app class="bg-slate-200 dark:bg-slate-700 relative">
     <v-card class="dark:bg-slate-300">
       <v-tabs align-tabs="center">
-        <v-tab :value="1">Art & Culture</v-tab>
-        <v-tab :value="2">Fitness</v-tab>
+        <v-tab @click="$emit('category', '')" :value="1">Art & Culture</v-tab>
+        <v-tab @click="$emit('category', 'Selenge')" :value="2">Fitness</v-tab>
         <v-tab :value="3">Self-Development</v-tab>
         <v-tab :value="4">Health & Wellness</v-tab>
         <v-tab :value="5">Fashion</v-tab>
@@ -20,7 +20,8 @@
         indeterminate
       ></v-progress-circular>
     <div class="grid grid-cols-3 my-6 gap-8 px-4 h-full w-full auto-rows-min relative">
-      <v-card class="text-slate-900" v-for="event in events" :key="event.id">
+      <v-card class="text-slate-900 hover:transition hover:delay-200 hover:ease-in hover:scale-110" v-for="event in events" :key="event.id">
+      <NuxtLink :to="{path: `/events/${event.id}`}">
         <v-img class="align-end text-white" height="200" :src="event.image" cover>
           <v-card-title>{{ event.title }}</v-card-title>
         </v-img>
@@ -33,6 +34,7 @@
         <v-card-text>
           <p class="text-sm md:text-md">Created by: {{ event.userName }}</p>
         </v-card-text>
+      </NuxtLink>
       </v-card>
     </div>
   </v-app>

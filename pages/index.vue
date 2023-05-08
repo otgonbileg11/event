@@ -2,31 +2,49 @@
   <AppHeader />
   <ContentDoc />
   <LazyHeroBanner />
-  <Tab :events="events" :isPending="isPending"/>
+  <Tab :events="events" :isPending="isPending" @category="filterByCategory"/>
 </template>
 
 <script setup>
 import {useAuthStore} from '~/store/useAuthStore'
-import { getDocs, collection, query, onSnapshot, where } from 'firebase/firestore'
+import { getDocs, collection, query, onSnapshot, where, orderBy } from 'firebase/firestore'
 
 const store = useAuthStore()
-provide('store', store)
 
 const events = ref([])
 const isPending = ref(true)
-const category = ref('')
+
 
 const { $firestore } = useNuxtApp() 
 
+const filterByCategory = async (category) => {
+  try {
+    events.value = []
+    let eventSnapshot
+    if(category == '') {
+      eventSnapshot = await getDocs(collection($firestore, "events"));
+    } else {
+      eventSnapshot = await getDocs(query(collection($firestore, "events"), where("location", "==", category), orderBy('createdAt')));
+    }
+    eventSnapshot.forEach((doc) => {
+    events.value.push(doc.data())
+    isPending.value = false
+    });
+  } catch (err) {
+    console.log(err)
+    isPending.value = false
+  } 
+}
+
 onMounted(async () => {
   store.initUser()
-
-  onSnapshot(query(collection($firestore, "events"), where("location", "==", "Ulaanbaatar")), (docs) => {
+  onSnapshot(query(collection($firestore, "events"), orderBy('createdAt')), (docs) => {
     let results = []
     docs.forEach(doc => {
       results.push({ ...doc.data(), id: doc.id })
     })
     events.value = results
+    console.log(events.value)    
     isPending.value = false
     });
 })

@@ -10,6 +10,9 @@
 </template>
 
 <script setup>
+// import { useAuthStore } from "~/store/useAuthStore"
 
+// const store = useAuthStore()
+// store.initUser()
 </script>
 

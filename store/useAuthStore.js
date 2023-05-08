@@ -21,12 +21,12 @@ export const useAuthStore = defineStore({
     }
   },
   actions: {
-    async createUser (email, password, displayName) {
+    async createUser (email, password, displayName, photoURL) {
       const { $auth } = useNuxtApp();
       const router = useRouter()
       try {
         const userCredential = await createUserWithEmailAndPassword($auth, email, password)
-        await updateProfile($auth.currentUser,{ displayName })
+        await updateProfile($auth.currentUser,{ displayName, photoURL })
         router.replace({ path: "/" })
       } catch (err) {
         console.log(err)
@@ -38,6 +38,7 @@ export const useAuthStore = defineStore({
       const router = useRouter()
       await signInWithEmailAndPassword($auth, email, password)
         .then((userCredential) => {
+          console.log(userCredential)
           router.replace({ path: "/" })
         })
     }
@@ -53,20 +54,20 @@ export const useAuthStore = defineStore({
     initUser() {
       const { $auth } = useNuxtApp();
       onAuthStateChanged($auth, (user) => {
-      if (user) {
-        this.user.id = user.uid
-        this.user.email = user.email
-        this.user.photoUrl = user.photoURL
-        this.user.displayName = user.displayName
-        console.log(this.user.id)
-      } else {
-        this.user.email = ''
-        this.user.id = ''
-        this.user.photoUrl = ''
-        this.user.displayName = ''
-        console.log(this.user)
-      }
-});
+        if (user) {
+          this.user.id = user.uid
+          this.user.email = user.email
+          this.user.photoUrl = user.photoURL
+          this.user.displayName = user.displayName
+          console.log(this.user)
+        } else {
+          this.user.email = ''
+          this.user.id = ''
+          this.user.photoUrl = ''
+          this.user.displayName = ''
+          console.log(this.user)
+        }
+      });
     }    
   }
 })

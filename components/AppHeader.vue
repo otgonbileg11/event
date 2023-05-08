@@ -52,8 +52,9 @@
 </template>
 
 <script setup>
-const store = inject('store')
+import { useAuthStore } from '~/store/useAuthStore';
+
+const store = useAuthStore()
 const isLoggedIn = store.isUser
-console.log(isLoggedIn)
 
 </script>

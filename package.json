@@ -9,6 +9,8 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
+    "@dicebear/collection": "^6.0.3",
+    "@dicebear/core": "^6.0.3",
     "@headlessui/vue": "^1.7.13",
     "@mdi/font": "5.9.55",
     "@nuxtjs/color-mode": "2.0.5",

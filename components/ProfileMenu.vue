@@ -21,6 +21,7 @@
 <script setup>
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue"
 import defaultPhotoUrl from '~/assets/images/profile_default.jpg'
+import { useAuthStore } from "~/store/useAuthStore";
 
 const active = ref(false);
 const links = [
@@ -30,8 +31,9 @@ const links = [
   { href: "/sign-out", label: "Sign out" },
 ];
 
-const store = inject('store')
+const store = useAuthStore()
 const user = store.userProfile
+console.log(user)
 
 
 function handleSignOut() {

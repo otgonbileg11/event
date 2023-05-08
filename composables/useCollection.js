@@ -5,9 +5,9 @@ const useCollection = (collectionName) => {
    const { $firestore } = useNuxtApp()
    const addDocument = async (doc) => {
     error.value = null
-
     try {
       const docRef = await addDoc(collection($firestore, collectionName), doc)
+      return docRef
     }catch(err) {
       console.log(err)
       error.value = 'Could not '
