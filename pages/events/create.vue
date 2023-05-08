@@ -7,8 +7,4 @@
     middleware: ['auth']
   })
 
-  const handleChange = (e) => {
-    const selected = e.target.files[0]
-    console.log(selected)
-  }
 </script>

@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { defineStore } from "pinia";
 
 export const useAuthStore = defineStore({
@@ -8,7 +8,6 @@ export const useAuthStore = defineStore({
       user: {
         id: '',
         email: '',
-        photoUrl: '',
         displayName: ''
       }
     }
@@ -22,13 +21,17 @@ export const useAuthStore = defineStore({
     }
   },
   actions: {
-    async createUser (email, password) {
+    async createUser (email, password, displayName) {
       const { $auth } = useNuxtApp();
       const router = useRouter()
-      await createUserWithEmailAndPassword($auth, email, password)
-        .then((userCredential) => {
-          router.replace({ path: "/" })
-        })
+      try {
+        const userCredential = await createUserWithEmailAndPassword($auth, email, password)
+        await updateProfile($auth.currentUser,{ displayName })
+        router.replace({ path: "/" })
+      } catch (err) {
+        console.log(err)
+      }
+      
     },
     async signInUser (email, password) {
       const { $auth } = useNuxtApp();

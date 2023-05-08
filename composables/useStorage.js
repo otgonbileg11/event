@@ -1,6 +1,7 @@
 import { useAuthStore } from "~/store/useAuthStore"
+import { ref as fref, uploadBytes, getDownloadURL } from 'firebase/storage'
 
-const store = useAuthStore
+const store = useAuthStore()
 const user = store.userProfile
 
 const useStorage = () => {
@@ -11,11 +12,11 @@ const useStorage = () => {
 
   const uploadImage = async (file) => {
     filePath.value = `events/${user.id}/${file.name}`
-    const storageRef = $storage.ref(filePath.value)
+    const storageRef = fref($storage, filePath.value)
     
     try {
-      const res = await storageRef.put(file)
-      url.value = res.ref.getDownloadURL()
+      const res = await uploadBytes(storageRef, file)
+      url.value = await getDownloadURL(storageRef)
     } catch (err) {
       console.log(err.message)
       error.value = err.message

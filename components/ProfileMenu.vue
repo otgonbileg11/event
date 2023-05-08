@@ -2,7 +2,7 @@
   <Menu>
     <MenuButton @click="active = !active"
       ><img class="profile-button" :src="user.photoUrl || defaultPhotoUrl"
-    /><v-tooltip v-if="user.email" activator="parent" location="bottom">{{ user.email }}</v-tooltip></MenuButton>
+    /><v-tooltip v-if="user.email" activator="parent" location="bottom">{{ user.displayName || user.email }}</v-tooltip></MenuButton>
     <MenuItems
       class="absolute z-20 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-2xl bg-transparent shadow-lg focus:outline-none"
     >

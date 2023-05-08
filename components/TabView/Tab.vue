@@ -30,6 +30,9 @@
         <v-card-text>
           <p class="text-sm md:text-md">{{ event.description.length > 150 ? `${event.description.slice(0,150)} ...` : event.description}}</p>
         </v-card-text>
+        <v-card-text>
+          <p class="text-sm md:text-md">Created by: {{ event.userName }}</p>
+        </v-card-text>
       </v-card>
     </div>
   </v-app>
@@ -41,7 +44,6 @@
 // const tab = ref(null)
 const props = defineProps({
   events: {
-    type: Array,
     required: true
   },
   isPending: {

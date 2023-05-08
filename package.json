@@ -12,6 +12,7 @@
     "@headlessui/vue": "^1.7.13",
     "@mdi/font": "5.9.55",
     "@nuxtjs/color-mode": "2.0.5",
+    "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/tailwindcss": "4.0.0-12",
     "@pinia/nuxt": "^0.4.9",
     "bootstrap": "^5.2.3",

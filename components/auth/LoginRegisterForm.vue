@@ -5,9 +5,10 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 			<div class="signup">
 					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="displayName" v-model="signupform.displayName" placeholder="Name" required>
 					<input type="email" name="email" v-model="signupform.email" placeholder="Email" required>
 					<input type="password" name="pswd" v-model="signupform.password" placeholder="Password" required>
-					<p class="font-bold text-center text-violet-500">{{ error || '' }}</p>
+					<p class="font-bold text-center text-violet-600">{{ error || '' }}</p>
 					<button @click="$emit('signup')">Sign up</button>
 			</div>
 
@@ -15,7 +16,7 @@
 					<label for="chk" aria-hidden="true">Login</label>
 					<input type="email" name="email" v-model="loginform.email" placeholder="Email" required>
 					<input type="password" name="pswd" v-model="loginform.password" placeholder="Password" required>
-					<p class="font-bold text-center text-violet-500">{{ error || '' }}</p>
+					<p class="font-bold text-center text-violet-600">{{ error || '' }}</p>
 					<button @click="$emit('login')">Login</button>
 			</div>
 		</div>

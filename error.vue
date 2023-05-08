@@ -9,7 +9,7 @@
           You are all alone here
         </h1>
         <p class="font-extrabold text-8xl my-44 text-white animate-bounce">
-          404
+          404 <NuxtLink to="/">Go Home</NuxtLink>
         </p>
       </div>
     </div>

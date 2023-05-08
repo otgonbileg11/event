@@ -9,7 +9,8 @@ import {useAuthStore} from '~/store/useAuthStore'
 
 const signupform = ref({
   email: '',
-  password: ''
+  password: '',
+  displayName: ''
 })
 
 const loginform = ref({
@@ -24,10 +25,11 @@ const store = useAuthStore()
 async function handleSignUp() {
 	console.log(signupform.value)
   try {
-    const credential = await store.createUser(signupform.value.email, signupform.value.password)
+    const credential = await store.createUser(signupform.value.email, signupform.value.password, signupform.value.displayName)
     signupform.value = {
       email: '',
-      password: ''
+      password: '',
+      displayName: ''
     }
   } catch(err) {
     console.log(err.message)
@@ -39,14 +41,17 @@ async function handleSignUp() {
 
 async function handleLogin() {
   console.log(loginform.value)
-  const credential = await store.signInUser(loginform.value.email, loginform.value.password)
-  loginform.value = {
+  try {
+    const credential = await store.signInUser(loginform.value.email, loginform.value.password)
+    loginform.value = {
     email: '',
     password: ''
+    }
+  } catch (err) {
+    console.log(err)
+    error.value = err.message
   }
-  if(credential) {
-    console.log(credential)
-  }
+
 }
 
 definePageMeta({
