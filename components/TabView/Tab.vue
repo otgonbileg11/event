@@ -4,7 +4,7 @@
     <v-card class="dark:bg-slate-300">
       <v-tabs align-tabs="center">
         <v-tab @click="$emit('category', '')" :value="1">Art & Culture</v-tab>
-        <v-tab @click="$emit('category', 'Selenge')" :value="2">Fitness</v-tab>
+        <v-tab @click="$emit('category', 'Ulaanbaatar')" :value="2">Fitness</v-tab>
         <v-tab :value="3">Self-Development</v-tab>
         <v-tab :value="4">Health & Wellness</v-tab>
         <v-tab :value="5">Fashion</v-tab>
@@ -33,6 +33,9 @@
         </v-card-text>
         <v-card-text>
           <p class="text-sm md:text-md">Created by: {{ event.userName }}</p>
+        </v-card-text>
+        <v-card-text>
+          <p class="text-sm md:text-md">Created At: {{ event.createdAt }}</p>
         </v-card-text>
       </NuxtLink>
       </v-card>

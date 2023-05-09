@@ -33,8 +33,6 @@ const links = [
 
 const store = useAuthStore()
 const user = store.userProfile
-console.log(user)
-
 
 function handleSignOut() {
   store.logout()

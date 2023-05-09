@@ -24,7 +24,7 @@ const filterByCategory = async (category) => {
     if(category == '') {
       eventSnapshot = await getDocs(collection($firestore, "events"));
     } else {
-      eventSnapshot = await getDocs(query(collection($firestore, "events"), where("location", "==", category), orderBy('createdAt')));
+      eventSnapshot = await getDocs(query(collection($firestore, "events"), where("location", "==", 'Selenge')));
     }
     eventSnapshot.forEach((doc) => {
     events.value.push(doc.data())
@@ -38,13 +38,12 @@ const filterByCategory = async (category) => {
 
 onMounted(async () => {
   store.initUser()
-  onSnapshot(query(collection($firestore, "events"), orderBy('createdAt')), (docs) => {
+  onSnapshot(query(collection($firestore, "events")), (docs) => {
     let results = []
     docs.forEach(doc => {
       results.push({ ...doc.data(), id: doc.id })
     })
     events.value = results
-    console.log(events.value)    
     isPending.value = false
     });
 })

@@ -1,5 +1,5 @@
 import { useAuthStore } from "~/store/useAuthStore"
-import { ref as fref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { ref as fref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage'
 
 const store = useAuthStore()
 const user = store.userProfile
@@ -23,7 +23,17 @@ const useStorage = () => {
     }
   }
 
-  return { url, filePath, error, uploadImage }
+  const deleteImage = async (path) => {
+    const { $storage } = useNuxtApp()
+    try {
+      await deleteObject(fref($storage, path))
+    } catch(err) {
+      console.log(err.message)
+      error.value = err.message
+    }
+  }
+
+  return { url, filePath, error, uploadImage, deleteImage }
 } 
 
 export default useStorage
