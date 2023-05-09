@@ -36,8 +36,13 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxt/content',
-    // '@nuxtjs/pwa'
+    '@vite-pwa/nuxt'
   ], 
+  pwa: {
+    manifest: {
+      
+    }
+  },
   content: {
     highlight: {
       theme: 'github-light'

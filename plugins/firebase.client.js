@@ -7,10 +7,10 @@ import { getStorage } from 'firebase/storage'
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 export default defineNuxtPlugin(nuxtApp => {
-  // const config = useRuntimeConfig()
+  const config = useRuntimeConfig()
   // Your web app's Firebase configuration
   const firebaseConfig = {
-    apiKey: 'AIzaSyDD5pu1TyJqwxqejE6xCyTXZLgqgqIjeUM',
+    apiKey: config.public.apiBase,
     authDomain: "event-manager-d1666.firebaseapp.com",
     projectId: "event-manager-d1666",
     storageBucket: "event-manager-d1666.appspot.com",

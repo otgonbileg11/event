@@ -1,7 +1,7 @@
 <template>
   <AppHeader />
   <ContentDoc />
-  <LazyHeroBanner />
+  <LazyHeroBanner :events="bannerEvents" />
   <Tab :events="events" :isPending="isPending" @category="filterByCategory"/>
 </template>
 
@@ -13,7 +13,9 @@ const store = useAuthStore()
 
 const events = ref([])
 const isPending = ref(true)
-
+const bannerEvents = computed(() => {
+  return events.value.slice(0, 3)
+})
 
 const { $firestore } = useNuxtApp() 
 
@@ -24,7 +26,7 @@ const filterByCategory = async (category) => {
     if(category == '') {
       eventSnapshot = await getDocs(collection($firestore, "events"));
     } else {
-      eventSnapshot = await getDocs(query(collection($firestore, "events"), where("location", "==", 'Selenge')));
+      eventSnapshot = await getDocs(query(collection($firestore, "events"), where("location", "==", category)));
     }
     eventSnapshot.forEach((doc) => {
     events.value.push(doc.data())
