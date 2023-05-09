@@ -23,11 +23,10 @@ export const useAuthStore = defineStore({
   actions: {
     async createUser (email, password, displayName, photoURL) {
       const { $auth } = useNuxtApp();
-      const router = useRouter()
       try {
         const userCredential = await createUserWithEmailAndPassword($auth, email, password)
         await updateProfile($auth.currentUser,{ displayName, photoURL })
-        router.replace({ path: "/" })
+        return userCredential
       } catch (err) {
         console.log(err)
       }
@@ -35,11 +34,9 @@ export const useAuthStore = defineStore({
     },
     async signInUser (email, password) {
       const { $auth } = useNuxtApp();
-      const router = useRouter()
       await signInWithEmailAndPassword($auth, email, password)
         .then((userCredential) => {
           console.log(userCredential)
-          router.replace({ path: "/" })
         })
     }
     ,
