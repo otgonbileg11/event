@@ -3,7 +3,7 @@
   <ContentDoc />
   <LazyHeroBanner :events="bannerEvents" />
   <Tab :events="filteredEvents" :isPending="isPending" @category="filterByCategory"/>
-  <button @click="seeMore">See more</button>
+  <button @click="seeMore" class="text-accent my-2 font-bold bg-white p-3 rounded-md border border-accent hover:text-white hover:bg-accent dark:hover:bg-alternate dark:hover:text-accent">See more</button>
 </template>
 
 <script setup>

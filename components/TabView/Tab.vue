@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full py-16">
+  <div class="w-full pt-16">
   <v-app class="bg-slate-200 dark:bg-slate-700 relative">
     <v-card class="dark:bg-slate-300">
       <v-tabs align-tabs="center">
