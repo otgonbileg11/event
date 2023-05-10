@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="app"
-    class="bg-white dark:bg-black"
-  >
+  <div id="app">
       <slot />
       <DarkmodeDarkModeToggle/>
       <AppFooter />

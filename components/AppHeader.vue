@@ -1,6 +1,6 @@
 <template>
   <header class="app-header">
-    <nav class="flex justify-between gap-1 w-full py-6 md:py-10 items-center bg-slate-100 dark:bg-slate-900">
+    <nav class="flex justify-between gap-1 w-full py-6 items-center bg-slate-100 dark:bg-slate-900">
       <NuxtLink to="/"><h1 class="logo">イベントハッケン</h1></NuxtLink>
       <div class="flex items-center border-2 p-1 rounded-full dark:border-gray-500 hover:border-primary dark:hover:border-alternate">
           <svg
@@ -18,7 +18,7 @@
             />
           </svg>
           <input
-            class="ml-2 bg-transparent w-[100px] lg:w-[400px] focus:outline-none dark:text-slate-200"
+            class="ml-2 bg-transparent w-[150px] xl:w-[400px] focus:outline-none dark:text-slate-200"
             type="text"
             name="search"
             id="search"
@@ -26,7 +26,7 @@
           />
         </div>
       <div class="flex items-center">
-        <ul class="flex items-center space-x-4 md:space-x-12 relative">
+        <ul class="flex items-center space-x-4 relative">
           <li>
             <NuxtLink to="/events/create">
               <svg class="md:hidden w-5 fill-accent dark:fill-slate-200 hover:fill-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>

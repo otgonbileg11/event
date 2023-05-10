@@ -6,14 +6,16 @@
       hover:scale-110
       transition
       ease-in
-      border-2 border-slate-400
+      bg-white
+      border-4 border-slate-300
       dark:text-alternate dark:hover:text-slate-200 
       text-accent hover:text-primary
       rounded-full
       fixed
-      bottom-12
+      bottom-16
       right-12
     "
+    style="z-index: 1000"
     >
     <svg
       v-if="dark"
