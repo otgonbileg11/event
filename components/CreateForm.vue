@@ -56,15 +56,30 @@
                 </div>
               </div>
               <div class="flex flex-col">
+                <label class="leading-loose">Event Category</label>
+                <select v-model="category" required class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+                  <option disabled>Select a category</option>
+                  <option value="Art & Culture">Art & Culture</option>
+                  <option value="Fitness">Fitness</option>
+                  <option value="Self-Development">Self-Development</option>
+                  <option value="Health & Wellness">Health & Wellness</option>
+                  <option value="Fashion">Fashion</option>
+                  <option value="Music">Music</option>
+                  <option value="Food & Drink">Food & Drink</option>
+                  <option value="Beauty">Beauty</option>
+                </select>
+              </div>
+              <div class="flex flex-col">
                 <label class="leading-loose">Event Description</label>
                 <input v-model="description" type="text" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Description">
               </div>
             </div>
+            <div class="w-full text-center text-red">{{ error }}</div>
             <div class="pt-4 flex items-center space-x-4">
                 <button @click="handleCreate" v-if="!isPending" class="bg-slate-800 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Create</button>
                 <button v-else disabled class="bg-slate-800 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Saving...</button>
             </div>
-            <div class="w-full text-center py-4 text-accent"><NuxtLink to="/">Go Back</NuxtLink></div>
+            <div :disabled="isPending" class="w-full text-center py-4 text-accent"><NuxtLink to="/">Go Back</NuxtLink></div>
           </div>
         </div>
       </div>
@@ -73,7 +88,7 @@
 </template>
 
 <script setup>
-import { serverTimestamp } from "firebase/firestore"
+import { serverTimestamp, Timestamp } from "firebase/firestore"
 import { useAuthStore } from "~/store/useAuthStore"
 
   const { filePath, url, uploadImage } = useStorage()
@@ -92,9 +107,10 @@ import { useAuthStore } from "~/store/useAuthStore"
   const startTime = ref(null)
   const location = ref('')
   const description = ref('')
+  const category = ref('')
 
   async function handleCreate() {
-     if(file.value) {
+    if(file.value && title.value && startTime.value && location.value && description.value && category.value) {
       isPending.value = true
       await uploadImage(file.value)
       const docRef = await addDocument({
@@ -106,13 +122,18 @@ import { useAuthStore } from "~/store/useAuthStore"
         image: url.value,
         filePath: filePath.value,
         location: location.value,
-        category: [],
-        createdAt: serverTimestamp()
+        category: category.value,
+        createdAt: Timestamp.fromDate(new Date()),
+        going: 1
       })
       if(!error.value) {
         console.log('event added')
         router.push({ path: `/events/${docRef.id}`})
+      } else {
+        console.log(error.value)
       }
+    } else {
+      error.value = "Please input everything ..."
     }
   }
 

@@ -3,14 +3,15 @@
   <v-app class="bg-slate-200 dark:bg-slate-700 relative">
     <v-card class="dark:bg-slate-300">
       <v-tabs align-tabs="center">
-        <v-tab @click="$emit('category', '')" :value="1">Art & Culture</v-tab>
-        <v-tab @click="$emit('category', 'Ulaanbaatar')" :value="2">Fitness</v-tab>
-        <v-tab :value="3">Self-Development</v-tab>
-        <v-tab :value="4">Health & Wellness</v-tab>
-        <v-tab :value="5">Fashion</v-tab>
-        <v-tab :value="6">Music</v-tab>
-        <v-tab :value="7">Food & Drink</v-tab>
-        <v-tab :value="8">Beauty</v-tab>
+        <v-tab @click="$emit('category', '')" :value="1">All categories</v-tab>
+        <v-tab @click="$emit('category', 'Art & Culture')" :value="2">Art & Culture</v-tab>
+        <v-tab @click="$emit('category', 'Fitness')" :value="3">Fitness</v-tab>
+        <v-tab @click="$emit('category', 'Self-Development')" :value="4">Self-Development</v-tab>
+        <v-tab @click="$emit('category', 'Health & Wellness')" :value="5">Health & Wellness</v-tab>
+        <v-tab @click="$emit('category', 'Fashion')" :value="6">Fashion</v-tab>
+        <v-tab @click="$emit('category', 'Music')" :value="7">Music</v-tab>
+        <v-tab @click="$emit('category', 'Food & Drink')" :value="8">Food & Drink</v-tab>
+        <v-tab @click="$emit('category', 'Beauty')" :value="9">Beauty</v-tab>
       </v-tabs>
     </v-card>
     <v-progress-circular
@@ -28,6 +29,9 @@
         <v-card-subtitle class="mt-4">
           {{ event.location }}
         </v-card-subtitle>
+        <v-card-subtitle class="mt-4">
+          {{ event.startTime }}
+        </v-card-subtitle>
         <v-card-text>
           <p class="text-sm md:text-md">{{ event.description.length > 150 ? `${event.description.slice(0,150)} ...` : event.description}}</p>
         </v-card-text>
@@ -35,7 +39,7 @@
           <p class="text-sm md:text-md">Created by: {{ event.userName }}</p>
         </v-card-text>
         <v-card-text>
-          <p class="text-sm md:text-md">Created At: {{ event.createdAt }}</p>
+          <p class="text-sm md:text-md">Created At: {{ event.createdAt.toDate() }}</p>
         </v-card-text>
       </NuxtLink>
       </v-card>

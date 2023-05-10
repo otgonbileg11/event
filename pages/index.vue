@@ -44,7 +44,7 @@ const filterByCategory = async (category) => {
   if(category == '') {
     filteredEvents.value = events.value
   } else {
-    filteredEvents.value = events.value.filter(event => event.location == category) 
+    filteredEvents.value = events.value.filter(event => event.category == category) 
     
   }
 }
