@@ -3,11 +3,12 @@
   <ContentDoc />
   <LazyHeroBanner :events="bannerEvents" />
   <Tab :events="filteredEvents" :isPending="isPending" @category="filterByCategory"/>
+  <button @click="seeMore">See more</button>
 </template>
 
 <script setup>
 import {useAuthStore} from '~/store/useAuthStore'
-import { getDocs, collection, query, onSnapshot, where, orderBy } from 'firebase/firestore'
+import { collection, query, onSnapshot, orderBy, limit } from 'firebase/firestore'
 
 const store = useAuthStore()
 
@@ -21,24 +22,6 @@ const filteredEvents = ref(null)
 
 const { $firestore } = useNuxtApp() 
 
-// const filterByCategory = async (category) => {
-//   try {
-//     events.value = []
-//     let eventSnapshot
-//     if(category == '') {
-//       eventSnapshot = await getDocs(collection($firestore, "events"));
-//     } else {
-//       eventSnapshot = await getDocs(query(collection($firestore, "events"), where("location", "==", category)));
-//     }
-//     eventSnapshot.forEach((doc) => {
-//     events.value.push(doc.data())
-//     isPending.value = false
-//     });
-//   } catch (err) {
-//     console.log(err)
-//     isPending.value = false
-//   } 
-// }
 
 const filterByCategory = async (category) => {
   if(category == '') {
@@ -49,10 +32,14 @@ const filterByCategory = async (category) => {
   }
 }
 
-onMounted(async () => {
-  store.initUser()
-  
-  onSnapshot(query(collection($firestore, "events")), (docs) => {
+const numberOfEvents = ref(3)
+
+function seeMore() {
+  numberOfEvents.value += 3
+}
+
+watch(numberOfEvents, (newNumber, oldNumber) => {
+  onSnapshot(query(collection($firestore, "events"), orderBy('createdAt','desc'), limit(newNumber)), (docs) => {
   let results = []
   docs.forEach(doc => {
     results.push({ ...doc.data(), id: doc.id })
@@ -61,6 +48,12 @@ onMounted(async () => {
   filteredEvents.value = events.value
   isPending.value = false
   });
+}, {immediate: false})
+
+
+onMounted(async () => {
+  store.initUser()
+  numberOfEvents.value += 3
 })
 
 //   try {

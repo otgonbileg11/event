@@ -37,7 +37,7 @@
 
 <script setup>
 import defaultPhotoUrl from '~/assets/images/profile_default.jpg'
-import { getDocs, collection, query, where, orderBy, getDoc, doc } from 'firebase/firestore'
+import { getDocs, collection, query, where, getDoc, doc } from 'firebase/firestore'
 
 const route = useRoute()
 const events = ref([])

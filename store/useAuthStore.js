@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged, updateProfile } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { defineStore } from "pinia";
 
 export const useAuthStore = defineStore({
@@ -56,13 +56,11 @@ export const useAuthStore = defineStore({
           this.user.email = user.email
           this.user.photoUrl = user.photoURL
           this.user.displayName = user.displayName
-          console.log(this.user)
         } else {
           this.user.email = ''
           this.user.id = ''
           this.user.photoUrl = ''
           this.user.displayName = ''
-          console.log(this.user)
         }
       });
     }    

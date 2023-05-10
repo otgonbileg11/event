@@ -39,7 +39,7 @@
           <p class="text-sm md:text-md">Created by: {{ event.userName }}</p>
         </v-card-text>
         <v-card-text>
-          <p class="text-sm md:text-md">Created At: {{ event.createdAt.toDate() }}</p>
+          <p class="text-sm md:text-md">Created At: {{ event.createdAt.toDate().toUTCString() }}</p>
         </v-card-text>
       </NuxtLink>
       </v-card>

@@ -38,11 +38,6 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vite-pwa/nuxt'
   ], 
-  pwa: {
-    manifest: {
-      
-    }
-  },
   content: {
     highlight: {
       theme: 'github-light'

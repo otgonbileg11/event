@@ -1,4 +1,4 @@
-import { collection, doc, onSnapshot, query } from "firebase/firestore"
+import { doc, onSnapshot } from "firebase/firestore"
 
 const getDocument = (collectionName, id) => {
   const error = ref(null)

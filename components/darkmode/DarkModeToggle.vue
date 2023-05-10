@@ -3,10 +3,13 @@
    @click="toggleDarkMode"
    class="
       p-2
-      text-accent hover:text-slate-800
-      dark:text-alternate dark:hover:text-slate-200
-      focus-visible:ring-2 focus-visible:ring-green-400
-      rounded-lg
+      hover:scale-110
+      transition
+      ease-in
+      border-2 border-slate-400
+      dark:text-alternate dark:hover:text-slate-200 
+      text-accent hover:text-primary
+      rounded-full
       fixed
       bottom-12
       right-12
@@ -15,7 +18,7 @@
     <svg
       v-if="dark"
       xmlns="http://www.w3.org/2000/svg"
-      class="h-6 w-6"
+      class="h-10 w-10"
       viewBox="0 0 20 20"
       fill="currentColor"
     >
@@ -26,7 +29,7 @@
     <svg
       v-else
       xmlns="http://www.w3.org/2000/svg"
-      class="h-12 w-12"
+      class="h-10 w-10"
       viewBox="0 0 20 20"
       fill="currentColor"
     >
@@ -41,12 +44,15 @@
 
 <script setup>
 const colorMode = useColorMode()
+const dark = ref(false)
 
 function toggleDarkMode() {
   if(colorMode.value == 'light') {
     colorMode.value = 'dark'
+    dark.value = true
   }else {
     colorMode.value = 'light'
+    dark.value = false
   }
 }
 

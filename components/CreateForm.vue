@@ -17,8 +17,6 @@
                 <input v-model="title" type="text" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Event title">
               </div>
               <div class="flex flex-col">
-                <!-- <label class="leading-loose">Event Image</label> -->
-                <!-- <input type="file" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Event image"> -->
                   <div class="grid grid-cols-1 space-y-2">
                         <label class="leading-loose">Attach Image</label>
                         <div class="flex items-center justify-center w-full">
@@ -88,7 +86,7 @@
 </template>
 
 <script setup>
-import { serverTimestamp, Timestamp } from "firebase/firestore"
+import { Timestamp } from "firebase/firestore"
 import { useAuthStore } from "~/store/useAuthStore"
 
   const { filePath, url, uploadImage } = useStorage()
@@ -100,7 +98,7 @@ import { useAuthStore } from "~/store/useAuthStore"
   const user = store.userProfile
   const isPending = ref(false)
 
-  const types = ['image/png', 'image/jpeg']
+  const types = ['image/png', 'image/jpeg', 'image/webp']
   const title = ref('')
   const file = ref(null)
   const fileError = ref(null)

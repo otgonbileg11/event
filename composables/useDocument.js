@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, increment, updateDoc } from "firebase/firestore"
+import { deleteDoc, doc, increment, updateDoc } from "firebase/firestore"
 
 
 const useDocument = (collectionName, id) => {
