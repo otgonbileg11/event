@@ -1,42 +1,37 @@
-# Nuxt 3 Minimal Starter
+# The Event Management Platform using Nuxt 3 Framework
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## About this project
 
-## Setup
+The Event Management Platform is a web application designed to help users discover, create, and manage events. The system will be built using Nuxt 3, Vue 3, Firebase,  and various other required technologies. The application will support user authentication, event creation and management, and event discovery features.
 
-Make sure to install the dependencies:
+Checkout this [Deployed on Vercel](https://event-discovery.vercel.app/).
 
-```bash
-# yarn
-yarn install
+## Tech requirements
+Tech requirement & topics:
 
-# npm
-npm install
+- Vue3 composition api
+- Difference between Nuxt & Vue
+- SSR rendering
+- Middleware
+- Context API
+- Composition API
+- Async Components
+- Teleport Components
+- Provide Inject
+- Custom Directives
+- Plugins
+- Watchers
+- Animation
+- wPWA
+- Nuxt layer
+- Nuxt Content
+- Firebase
+- Headless UI + Bootstrap - Vuetify
+- Vuex or Pinia
+- Unit test
 
-# pnpm
-pnpm install
-```
+### Comment
+7 honogiin hugatsaatai daalgavar baisan uchraas yaaruu handaj haysan ymnud ih baigaa. bs nuxt 3 framework iig shuud surangaa ashiglasan bolhoor buruu code bichsen baigaa baihaa.
+bolomjooroo haraad ogoorei bayrlalaa (⊃｡•́‿•̀｡)⊃
 
-## Development Server
 
-Start the development server on `http://localhost:3000`
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
